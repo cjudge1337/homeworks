@@ -16,6 +16,6 @@
 
     def show
       # return a copy of the stack
-      ivar = @ivar
+      ivar = @ivas
     end
   end
