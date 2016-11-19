@@ -1,3 +1,5 @@
+#require 'byebug'
+
 class Simon
   COLORS = %w(red blue green yellow)
 
@@ -34,7 +36,7 @@ class Simon
     @seq.each do |color|
       p "#{color}"
       sleep(1)
-      system('clr')
+      system('clear')
     end
   end
 
