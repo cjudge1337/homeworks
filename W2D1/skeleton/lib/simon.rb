@@ -34,14 +34,15 @@ class Simon
   def show_sequence
     add_random_color
     @seq.each do |color|
+      system('clear')
       p "#{color}"
       sleep(1)
-      system('clear')
     end
+    system('clear')
   end
 
   def require_sequence
-    puts "Input sequence"
+    puts "Input sequence. ex: 'gbry'"
     input = gets.chomp
   end
 
@@ -51,6 +52,7 @@ class Simon
 
   def round_success_message
     puts "Correct!"
+    sleep(1)
   end
 
   def game_over_message
