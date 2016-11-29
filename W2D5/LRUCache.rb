@@ -16,7 +16,7 @@ class LRUCache
       if @cache.include?(el)
         @cache.delete(el)
         @cache << el
-      elsif @cache.size == @size
+      elsif @cache.size >= @size
         @cache.shift
         @cache << el
       else
