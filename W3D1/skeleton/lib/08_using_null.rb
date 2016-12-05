@@ -103,12 +103,11 @@ def dept_staff_counts
   # Engineering department is listed.
   execute(<<-SQL)
     SELECT
-      depts.name,
-      COUNT(teachers.name)
+      depts.name, COUNT(teachers.*)
     FROM
-      depts
-    LEFT JOIN
-      teachers ON depts.id = teachers.dept_id
+      teachers
+    RIGHT JOIN
+      depts ON teachers.dept_id = depts.id
     GROUP BY
       depts.name
   SQL
@@ -119,7 +118,7 @@ def teachers_and_divisions
   # the the teacher is in dept 1 or 2 and 'Art' otherwise.
   execute(<<-SQL)
     SELECT
-      
+
   SQL
 end
 
