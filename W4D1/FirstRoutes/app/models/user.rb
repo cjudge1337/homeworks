@@ -1,3 +1,8 @@
 class User < ActiveRecord::Base
-  validates :name, :email, :presence => true
+  has_many :contacts,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: :Contact
+
+  validates :username, :presence => true, :uniqueness => true
 end
