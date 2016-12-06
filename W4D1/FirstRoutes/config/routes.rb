@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   #resources :users
 
   resources :users, only: [:create, :destroy, :index, :show, :update]
+  resources :contacts, only: [:create, :destroy, :index, :show, :update]
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
