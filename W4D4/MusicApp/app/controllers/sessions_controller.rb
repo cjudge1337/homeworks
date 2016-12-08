@@ -14,12 +14,12 @@ class SessionsController < ApplicationController
     else
       login_user!(user)
       # redirect_to
-      render json: "$$$"
+      redirect_to user_url(user)
     end
   end
 
   def destroy
-    logout_user
+    logout_user!
     redirect_to new_session_url
   end
 end
