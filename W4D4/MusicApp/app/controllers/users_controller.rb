@@ -8,8 +8,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login_user!(@user)
-      # redirect_to
-      redirect_to user_url(@user)
+      redirect_to bands_url
     else
       render :new
     end
