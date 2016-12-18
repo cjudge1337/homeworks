@@ -1,0 +1,15 @@
+<h1><%= @sub.title %></h1>
+<p><%= @sub.description %></p>
+<%= button_to "Edit", edit_sub_url(@sub), method: :get %>
+
+<br>
+<br>
+
+<% @sub.posts.each do |post| %>
+  <%= link_to post.title, post_url(post) %><br><br>
+<% end %>
+
+<br>
+<br>
+
+<%= button_to "Add Post", new_sub_post_url(@sub), method: :get %>

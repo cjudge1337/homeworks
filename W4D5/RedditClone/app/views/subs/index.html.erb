@@ -1,0 +1,11 @@
+<h1>All the Subjects</h1>
+
+<% @subs.each do |subject| %>
+  <%= link_to subject.title, sub_url(subject) %><br>
+  <% if current_user.is_moderator?(subject) %>
+    <%= button_to "Delete", sub_url(subject), method: :delete %>
+  <% end %>
+  <br>
+<% end %>
+
+<%= link_to "Add Subject", new_sub_url %>
