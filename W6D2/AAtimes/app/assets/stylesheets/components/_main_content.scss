@@ -1,0 +1,19 @@
+.author {
+  font-size: 11px;
+  color: $gray;
+  padding: 5px;
+}
+
+.news_article h2 {
+  font-size: 25px;
+  font-style: italic;
+  text-decoration: underline;
+  font-weight: bold;
+}
+.news_article ul {
+  list-style: disc;
+}
+
+.news_article ul li {
+  padding: 10px;
+}
