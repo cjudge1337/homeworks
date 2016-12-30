@@ -62,6 +62,10 @@
 	
 	var _store2 = _interopRequireDefault(_store);
 	
+	var _reducer = __webpack_require__(203);
+	
+	var _reducer2 = _interopRequireDefault(_reducer);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	document.addEventListener("DOMContentLoaded", function () {
@@ -22739,7 +22743,15 @@
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
 	  var action = arguments[1];
 	
-	  return state; // remove this and fill out the body of the reducer function
+	  switch (action.type) {
+	    case "SWITCH_CURRENCY":
+	      return {
+	        baseCurrency: action.baseCurrency,
+	        rates: action.rates
+	      };
+	    default:
+	      return state;
+	  }
 	};
 	
 	exports.default = reducer;
