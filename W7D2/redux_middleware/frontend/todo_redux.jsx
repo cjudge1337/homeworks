@@ -7,19 +7,24 @@ import Root from './components/root';
 document.addEventListener('DOMContentLoaded', () => {
   const preloadedState = localStorage.state ?
     JSON.parse(localStorage.state) : {};
-  const store = configureStore(preloadedState);
-  store.dispatch = addLoggingToDispatch(store);
+  let store = configureStore(preloadedState);
+  store = applyMiddlewares(store, addLoggingToDispatch);
   const root = document.getElementById('content');
   ReactDOM.render(<Root store={store} />, root);
 });
 
-const addLoggingToDispatch = function(store) {
-  let dispatch = store.dispatch;
+const addLoggingToDispatch = store => next => action => {
+  console.log(store.getState());
+  console.log(action);
+  let result = next(action);
+  console.log(store.getState());
+  return result;
+};
 
-  return (action) => {
-    console.log(store.getState());
-    console.log(action);
-    dispatch(action);
-    console.log(store.getState());
-  };
+const applyMiddlewares = (store, middlewares) => {
+  let dispatch = store.dispatch;
+  middlewares.forEach((middleware) => {
+    dispatch = middleware(store)(dispatch);
+  });
+  return Object.assign({}, store, { dispatch });
 };
