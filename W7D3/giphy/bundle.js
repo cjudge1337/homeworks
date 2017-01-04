@@ -64,14 +64,18 @@
 	
 	var _api_util = __webpack_require__(185);
 	
+	var _giphy_actions = __webpack_require__(184);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	window.fetchSearchGiphys = _api_util.fetchSearchGiphys;
-	
-	// document.addEventListener("DOMContentLoaded", () => {
-	//   let root = document.getElementById("root");
-	//   ReactDOM.render(<Root />, root);
-	// });
+	document.addEventListener("DOMContentLoaded", function () {
+	  var store = (0, _store2.default)();
+	  var root = document.getElementById("root");
+	  window.store = store;
+	  window.fetchSearchGiphys = _api_util.fetchSearchGiphys;
+	  window.receiveSearchGiphys = _giphy_actions.receiveSearchGiphys;
+	  // ReactDOM.render(<Root store={store}/>, root);
+	});
 
 /***/ },
 /* 1 */
@@ -19773,6 +19777,10 @@
 
 	'use strict';
 	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
 	var _redux = __webpack_require__(160);
 	
 	var _reduxThunk = __webpack_require__(181);
@@ -19782,8 +19790,14 @@
 	var _root_reducer = __webpack_require__(182);
 	
 	var _root_reducer2 = _interopRequireDefault(_root_reducer);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var configureStore = function configureStore() {
+	  return (0, _redux.createStore)(_root_reducer2.default);
+	};
+	
+	exports.default = configureStore;
 
 /***/ },
 /* 160 */
@@ -20851,16 +20865,49 @@
 
 	'use strict';
 	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
 	var _redux = __webpack_require__(160);
 	
-	var _giphys_reducer = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./giphys_reducer\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _giphys_reducer = __webpack_require__(183);
 	
 	var _giphys_reducer2 = _interopRequireDefault(_giphys_reducer);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = (0, _redux.combineReducers)({
+	  giphys: _giphys_reducer2.default
+	});
 
 /***/ },
-/* 183 */,
+/* 183 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _giphy_actions = __webpack_require__(184);
+	
+	var GiphysReducer = function GiphysReducer() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+	  var action = arguments[1];
+	
+	  switch (action.type) {
+	    case _giphy_actions.RECEIVE_SEARCH_GIPHYS:
+	      return action.giphys;
+	    default:
+	      return state;
+	  }
+	};
+	
+	exports.default = GiphysReducer;
+
+/***/ },
 /* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
