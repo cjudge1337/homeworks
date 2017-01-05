@@ -25616,17 +25616,17 @@
 	  }, {
 	    key: 'resetRed',
 	    value: function resetRed() {
-	      // your code here
+	      this.props.router.push('/red');
 	    }
 	  }, {
 	    key: 'addOrange',
 	    value: function addOrange() {
-	      // your code here
+	      this.props.router.push('/red/orange');
 	    }
 	  }, {
 	    key: 'addYellow',
 	    value: function addYellow() {
-	      // your code here
+	      this.props.router.push('/red/yellow');
 	    }
 	  }]);
 	
@@ -25777,12 +25777,12 @@
 	  }, {
 	    key: 'resetBlue',
 	    value: function resetBlue() {
-	      // your code here
+	      this.props.router.push('/blue');
 	    }
 	  }, {
 	    key: 'addIndigo',
 	    value: function addIndigo() {
-	      // your code here
+	      this.props.router.push('/blue/indigo');
 	    }
 	  }]);
 	
